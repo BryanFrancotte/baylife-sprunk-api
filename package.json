@@ -3,12 +3,18 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:migrate:deploy": "prisma migrate deploy",
+    "db:pull": "prisma db pull",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
     "@elysiajs/jwt": "^1.4.0",
     "@elysiajs/openapi": "^1.4.11",
-    "@prisma/adapter-pg": "^7.0.1",
+    "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "^7.0.1",
     "@prisma/extension-accelerate": "^3.0.0",
     "dotenv": "^17.2.3",

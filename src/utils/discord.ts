@@ -5,7 +5,7 @@ export async function exchangeCodeForToken(code: string, redirectUri: string) {
   const params = new URLSearchParams({
     client_id: process.env.DISCORD_CLIENT_ID!,
     client_secret: process.env.DISCORD_CLIENT_SECRET!,
-    grant_type: "authorizatioin_code",
+    grant_type: "authorization_code",
     code,
     redirect_uri: redirectUri
   })
@@ -16,27 +16,27 @@ export async function exchangeCodeForToken(code: string, redirectUri: string) {
     body: params
   })
 
-  if (!response.ok) throw new Error("Failed to exchange discord token");
+  if (!response.ok) throw new Error(`Failed to exchange discord token (${response.status} | ${response.statusText})`);
 
   return await response.json();
 }
 
 export async function getDiscordUser(accessToken: string) {
-  const response = await fetch("http://discord.com/api/users/@me", {
+  const response = await fetch("https://discord.com/api/users/@me", {
     headers: { Authorization: `Bearer ${accessToken}` }
   })
 
-  if(!response.ok) throw new Error("Failed to fetch Discord user")
+  if(!response.ok) throw new Error(`Failed to fetch Discord user (${response.status} | ${response.statusText})`)
 
   return response.json()
 }
 
-export async function getDiscordGuildMember(accessToken: string, guildId: string, userId: string){
-  const response = await fetch(`http://discord.com/api/guilds/${guildId}/members/${userId}`, {
+export async function getDiscordGuildMember(accessToken: string, guildId: string, userId: number){
+  const response = await fetch(`https://discord.com/api/users/@me/guilds/${guildId}/member`, {
     headers: { Authorization: `Bearer ${accessToken}` }
   })
 
-  if(!response.ok) throw new Error ("Failed to fetch discord guild member")
+  if(!response.ok) throw new Error (`Failed to fetch discord guild member (${response.status} | ${response.statusText})`)
 
   return response.json()
 }
@@ -66,8 +66,8 @@ export async function refreshToken(userId: string) {
 
   if (!response.ok) {
     await prisma.user.update({
-      while: { id: userId },
-      data: { tokenCipher: null, refreshExpires: null}
+      where: { id: userId },
+      data: { tokenCipher: null, refreshExpiresAt: null}
     })
     throw new Error("Failed to refresh Discord token")
   }
@@ -84,7 +84,7 @@ export async function refreshToken(userId: string) {
     where: { id: userId },
     data: { 
       tokenCipher: encryptTokenBlob(newTokenBlob),
-      refreshExpires: new Date(newTokenBlob.expires_at)
+      refreshExpiresAt: new Date(newTokenBlob.expires_at)
     }
   })
 

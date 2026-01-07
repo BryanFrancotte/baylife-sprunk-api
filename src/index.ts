@@ -1,6 +1,5 @@
 import openapi from "@elysiajs/openapi";
 import { Elysia } from "elysia";
-import { auth } from "./auth";
 import { jwt } from "@elysiajs/jwt";
 import { authDiscord } from "./auth-discrod";
 

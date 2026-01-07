@@ -7,8 +7,21 @@
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
+  engineType = "client"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model User {
+  id String @id @default(cuid()) @db.VarChar(255)
+  discordId String @unique @db.VarChar(255)
+  name String @db.VarChar(255)
+  avatar String? @db.VarChar(255)
+  tokenCipher String? @db.VarChar(255)
+  tokenNonce String? @db.VarChar(255)
+  refreshExpiresAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

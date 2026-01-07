@@ -57,7 +57,7 @@ export const authDiscord = new Elysia({ prefix: "/auth/discord" })
         return "You are not a member of the server";
       }
 
-      if (!guildMember.roles.contains(process.env.DISCORD_ROLE_ID)) {
+      if (!guildMember.roles.includes(process.env.DISCORD_ROLE_ID!)) {
         set.status = 403;
         return "You don't have the required permision to access this page";
       }
@@ -67,15 +67,16 @@ export const authDiscord = new Elysia({ prefix: "/auth/discord" })
       const user = await prisma.user.upsert({
         where: { discordId: discordUser.id },
         update: {
-          username: discordUser.username,
+          name: discordUser.username,
           tokenCipher: cipher,
-          refreshExpires: new Date(tokenBlob.expires_at),
+          refreshExpiresAt: new Date(tokenBlob.expires_at),
         },
         create: {
           discordId: discordUser.id,
-          username: discordUser.username,
+          name: discordUser.username,
+          avatar: discordUser.avatar_url ?? null,
           tokenCipher: cipher,
-          refreshExpires: new Date(tokenBlob.expires_at),
+          refreshExpiresAt: new Date(tokenBlob.expires_at),
         },
       });
 
