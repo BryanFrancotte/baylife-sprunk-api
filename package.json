@@ -10,7 +10,8 @@
     "db:pull": "prisma db pull",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "vercel-build": "prisma generate && prisma migrate deploy"
   },
   "dependencies": {
     "@elysiajs/jwt": "^1.4.0",
