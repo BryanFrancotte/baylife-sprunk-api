@@ -3,7 +3,7 @@ import { Elysia } from "elysia";
 import { jwt } from "@elysiajs/jwt";
 import { authDiscord } from "./auth-discrod";
 
-const app = new Elysia()
+const app =  new Elysia()
   .use(openapi())
   .use(
     jwt({
@@ -18,3 +18,5 @@ const app = new Elysia()
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
 );
+
+export default app;
