@@ -2,8 +2,13 @@ import openapi from "@elysiajs/openapi";
 import { Elysia } from "elysia";
 import { jwt } from "@elysiajs/jwt";
 import { authDiscord } from "./auth-discrod";
+import cors from "@elysiajs/cors";
 
 const app =  new Elysia()
+  .use(cors({
+    origin: true,
+    credentials: true,
+  }))
   .use(openapi())
   .use(
     jwt({
@@ -12,11 +17,12 @@ const app =  new Elysia()
     })
   )
   .use(authDiscord)
-  .get("/", () => "Hello Elysia")
-  .listen(3500);
+  .get("/", () => "Hello Elysia");
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+const port = 3500;
+
+app.listen(port);
+
+console.log(`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`);
 
 export default app;

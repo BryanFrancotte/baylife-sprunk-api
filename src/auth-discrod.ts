@@ -80,7 +80,7 @@ export const authDiscord = new Elysia({ prefix: "/auth/discord" })
         },
       });
 
-      const session = jwt.sign({ sub: user.id });
+      const session = await jwt.sign({ sub: user.id });
 
       cookie.session.set({
         value: session,
@@ -101,4 +101,16 @@ export const authDiscord = new Elysia({ prefix: "/auth/discord" })
         code: t.String(),
       }),
     }
-  );
+  )
+  .get("/me", async ({ cookie, jwt }) => {
+    const token = cookie.session?.value;
+    if(!token || typeof token !== 'string') return { authenticated: false };
+
+    const payload = await jwt.verify(token);
+    if(!payload) return { authenticated: false };
+
+    return {
+      authenticated: true,
+      user: payload
+    }
+  });
