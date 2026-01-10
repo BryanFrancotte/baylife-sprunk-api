@@ -1,12 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider   = "prisma-client"
+  output     = "../generated/prisma"
   engineType = "client"
 }
 
@@ -15,13 +9,50 @@ datasource db {
 }
 
 model User {
-  id String @id @default(cuid()) @db.VarChar(255)
-  discordId String @unique @db.VarChar(255)
-  name String @db.VarChar(255)
-  avatar String? @db.VarChar(255)
-  tokenCipher String? @db.VarChar(255)
-  tokenNonce String? @db.VarChar(255)
+  id               String    @id @default(cuid()) @db.VarChar(255)
+  discordId        String    @unique @db.VarChar(255)
+  name             String?   @db.VarChar(255)
+  avatar           String?   @db.VarChar(255)
+  tokenCipher      String?   @db.VarChar(255)
+  tokenNonce       String?   @db.VarChar(255)
   refreshExpiresAt DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  discordName      String    @db.VarChar(255)
+
+  createdDispenser Dispenser[] @relation("AddedDispenser")
+  updatedDispenser Dispenser[] @relation("updatedDispenser")
+}
+
+model Dispenser {
+  id String @id @default(cuid()) @db.VarChar(255)
+  ownerId String @db.VarChar(255)
+  location String @db.VarChar(255)
+  sharePercentage Decimal
+  collectedAmount Int
+  lastPeriondCollectedAmount Int
+  totalMoneyGenerated Int
+  periodStart DateTime?
+  periodEnd DateTime?
+  createdById String @db.VarChar(255)
   createdAt DateTime @default(now())
+  updatedById String? @db.VarChar(255)
   updatedAt DateTime @updatedAt
+
+
+  owner Client @relation(fields: [ownerId], references: [id])
+  createdBy User @relation("AddedDispenser", fields: [createdById], references: [id])
+  updatedBy User? @relation("updatedDispenser", fields: [updatedById], references: [id])
+}
+
+model Client {
+  id String @id @default(cuid()) @db.VarChar(255)
+  name String @db.VarChar(255)
+  phoneNumber String @db.VarChar(255)
+  createdBy String @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedBy String? @db.VarChar(255)
+  updatedAt DateTime @updatedAt
+
+  dispensers Dispenser[]
 }

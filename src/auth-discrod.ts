@@ -67,14 +67,17 @@ export const authDiscord = new Elysia({ prefix: "/auth/discord" })
       const user = await prisma.user.upsert({
         where: { discordId: discordUser.id },
         update: {
-          name: discordUser.username,
+          discordName: discordUser.username,
+          name: guildMember.nick,
+          avatar: discordUser.avatar,
           tokenCipher: cipher,
           refreshExpiresAt: new Date(tokenBlob.expires_at),
         },
         create: {
           discordId: discordUser.id,
-          name: discordUser.username,
-          avatar: discordUser.avatar_url ?? null,
+          discordName: discordUser.username,
+          name: guildMember.nick,
+          avatar: discordUser.avatar,
           tokenCipher: cipher,
           refreshExpiresAt: new Date(tokenBlob.expires_at),
         },
@@ -104,6 +107,7 @@ export const authDiscord = new Elysia({ prefix: "/auth/discord" })
   )
   .get("/me", async ({ cookie, jwt }) => {
     const token = cookie.session?.value;
+    console.log(token)
     if(!token || typeof token !== 'string') return { authenticated: false };
 
     const payload = await jwt.verify(token);
