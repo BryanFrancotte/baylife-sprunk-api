@@ -27,7 +27,6 @@ export type AggregateUser = {
 export type UserMinAggregateOutputType = {
   id: string | null
   discordId: string | null
-  discordName: string | null
   name: string | null
   avatar: string | null
   tokenCipher: string | null
@@ -35,12 +34,12 @@ export type UserMinAggregateOutputType = {
   refreshExpiresAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  discordName: string | null
 }
 
 export type UserMaxAggregateOutputType = {
   id: string | null
   discordId: string | null
-  discordName: string | null
   name: string | null
   avatar: string | null
   tokenCipher: string | null
@@ -48,12 +47,12 @@ export type UserMaxAggregateOutputType = {
   refreshExpiresAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  discordName: string | null
 }
 
 export type UserCountAggregateOutputType = {
   id: number
   discordId: number
-  discordName: number
   name: number
   avatar: number
   tokenCipher: number
@@ -61,6 +60,7 @@ export type UserCountAggregateOutputType = {
   refreshExpiresAt: number
   createdAt: number
   updatedAt: number
+  discordName: number
   _all: number
 }
 
@@ -68,7 +68,6 @@ export type UserCountAggregateOutputType = {
 export type UserMinAggregateInputType = {
   id?: true
   discordId?: true
-  discordName?: true
   name?: true
   avatar?: true
   tokenCipher?: true
@@ -76,12 +75,12 @@ export type UserMinAggregateInputType = {
   refreshExpiresAt?: true
   createdAt?: true
   updatedAt?: true
+  discordName?: true
 }
 
 export type UserMaxAggregateInputType = {
   id?: true
   discordId?: true
-  discordName?: true
   name?: true
   avatar?: true
   tokenCipher?: true
@@ -89,12 +88,12 @@ export type UserMaxAggregateInputType = {
   refreshExpiresAt?: true
   createdAt?: true
   updatedAt?: true
+  discordName?: true
 }
 
 export type UserCountAggregateInputType = {
   id?: true
   discordId?: true
-  discordName?: true
   name?: true
   avatar?: true
   tokenCipher?: true
@@ -102,6 +101,7 @@ export type UserCountAggregateInputType = {
   refreshExpiresAt?: true
   createdAt?: true
   updatedAt?: true
+  discordName?: true
   _all?: true
 }
 
@@ -180,7 +180,6 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type UserGroupByOutputType = {
   id: string
   discordId: string
-  discordName: string
   name: string | null
   avatar: string | null
   tokenCipher: string | null
@@ -188,6 +187,7 @@ export type UserGroupByOutputType = {
   refreshExpiresAt: Date | null
   createdAt: Date
   updatedAt: Date
+  discordName: string
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -214,7 +214,6 @@ export type UserWhereInput = {
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.StringFilter<"User"> | string
   discordId?: Prisma.StringFilter<"User"> | string
-  discordName?: Prisma.StringFilter<"User"> | string
   name?: Prisma.StringNullableFilter<"User"> | string | null
   avatar?: Prisma.StringNullableFilter<"User"> | string | null
   tokenCipher?: Prisma.StringNullableFilter<"User"> | string | null
@@ -222,12 +221,14 @@ export type UserWhereInput = {
   refreshExpiresAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  discordName?: Prisma.StringFilter<"User"> | string
+  createdDispenser?: Prisma.DispenserListRelationFilter
+  updatedDispenser?: Prisma.DispenserListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   discordId?: Prisma.SortOrder
-  discordName?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   tokenCipher?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -235,6 +236,9 @@ export type UserOrderByWithRelationInput = {
   refreshExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  discordName?: Prisma.SortOrder
+  createdDispenser?: Prisma.DispenserOrderByRelationAggregateInput
+  updatedDispenser?: Prisma.DispenserOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -243,7 +247,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
-  discordName?: Prisma.StringFilter<"User"> | string
   name?: Prisma.StringNullableFilter<"User"> | string | null
   avatar?: Prisma.StringNullableFilter<"User"> | string | null
   tokenCipher?: Prisma.StringNullableFilter<"User"> | string | null
@@ -251,12 +254,14 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   refreshExpiresAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  discordName?: Prisma.StringFilter<"User"> | string
+  createdDispenser?: Prisma.DispenserListRelationFilter
+  updatedDispenser?: Prisma.DispenserListRelationFilter
 }, "id" | "discordId">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   discordId?: Prisma.SortOrder
-  discordName?: Prisma.SortOrder
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   avatar?: Prisma.SortOrderInput | Prisma.SortOrder
   tokenCipher?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -264,6 +269,7 @@ export type UserOrderByWithAggregationInput = {
   refreshExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  discordName?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -275,7 +281,6 @@ export type UserScalarWhereWithAggregatesInput = {
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"User"> | string
   discordId?: Prisma.StringWithAggregatesFilter<"User"> | string
-  discordName?: Prisma.StringWithAggregatesFilter<"User"> | string
   name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   avatar?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   tokenCipher?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -283,12 +288,12 @@ export type UserScalarWhereWithAggregatesInput = {
   refreshExpiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  discordName?: Prisma.StringWithAggregatesFilter<"User"> | string
 }
 
 export type UserCreateInput = {
   id?: string
   discordId: string
-  discordName: string
   name?: string | null
   avatar?: string | null
   tokenCipher?: string | null
@@ -296,12 +301,14 @@ export type UserCreateInput = {
   refreshExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  discordName: string
+  createdDispenser?: Prisma.DispenserCreateNestedManyWithoutCreatedByInput
+  updatedDispenser?: Prisma.DispenserCreateNestedManyWithoutUpdatedByInput
 }
 
 export type UserUncheckedCreateInput = {
   id?: string
   discordId: string
-  discordName: string
   name?: string | null
   avatar?: string | null
   tokenCipher?: string | null
@@ -309,12 +316,14 @@ export type UserUncheckedCreateInput = {
   refreshExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  discordName: string
+  createdDispenser?: Prisma.DispenserUncheckedCreateNestedManyWithoutCreatedByInput
+  updatedDispenser?: Prisma.DispenserUncheckedCreateNestedManyWithoutUpdatedByInput
 }
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   discordId?: Prisma.StringFieldUpdateOperationsInput | string
-  discordName?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tokenCipher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -322,12 +331,14 @@ export type UserUpdateInput = {
   refreshExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  discordName?: Prisma.StringFieldUpdateOperationsInput | string
+  createdDispenser?: Prisma.DispenserUpdateManyWithoutCreatedByNestedInput
+  updatedDispenser?: Prisma.DispenserUpdateManyWithoutUpdatedByNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   discordId?: Prisma.StringFieldUpdateOperationsInput | string
-  discordName?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tokenCipher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -335,12 +346,14 @@ export type UserUncheckedUpdateInput = {
   refreshExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  discordName?: Prisma.StringFieldUpdateOperationsInput | string
+  createdDispenser?: Prisma.DispenserUncheckedUpdateManyWithoutCreatedByNestedInput
+  updatedDispenser?: Prisma.DispenserUncheckedUpdateManyWithoutUpdatedByNestedInput
 }
 
 export type UserCreateManyInput = {
   id?: string
   discordId: string
-  discordName: string
   name?: string | null
   avatar?: string | null
   tokenCipher?: string | null
@@ -348,12 +361,12 @@ export type UserCreateManyInput = {
   refreshExpiresAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  discordName: string
 }
 
 export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   discordId?: Prisma.StringFieldUpdateOperationsInput | string
-  discordName?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tokenCipher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -361,12 +374,12 @@ export type UserUpdateManyMutationInput = {
   refreshExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  discordName?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   discordId?: Prisma.StringFieldUpdateOperationsInput | string
-  discordName?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tokenCipher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -374,12 +387,12 @@ export type UserUncheckedUpdateManyInput = {
   refreshExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  discordName?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   discordId?: Prisma.SortOrder
-  discordName?: Prisma.SortOrder
   name?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   tokenCipher?: Prisma.SortOrder
@@ -387,12 +400,12 @@ export type UserCountOrderByAggregateInput = {
   refreshExpiresAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  discordName?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   discordId?: Prisma.SortOrder
-  discordName?: Prisma.SortOrder
   name?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   tokenCipher?: Prisma.SortOrder
@@ -400,12 +413,12 @@ export type UserMaxOrderByAggregateInput = {
   refreshExpiresAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  discordName?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   discordId?: Prisma.SortOrder
-  discordName?: Prisma.SortOrder
   name?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
   tokenCipher?: Prisma.SortOrder
@@ -413,6 +426,17 @@ export type UserMinOrderByAggregateInput = {
   refreshExpiresAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  discordName?: Prisma.SortOrder
+}
+
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
+}
+
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -431,12 +455,223 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type UserCreateNestedOneWithoutCreatedDispenserInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedDispenserInput, Prisma.UserUncheckedCreateWithoutCreatedDispenserInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedDispenserInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutUpdatedDispenserInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUpdatedDispenserInput, Prisma.UserUncheckedCreateWithoutUpdatedDispenserInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUpdatedDispenserInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCreatedDispenserNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCreatedDispenserInput, Prisma.UserUncheckedCreateWithoutCreatedDispenserInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreatedDispenserInput
+  upsert?: Prisma.UserUpsertWithoutCreatedDispenserInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreatedDispenserInput, Prisma.UserUpdateWithoutCreatedDispenserInput>, Prisma.UserUncheckedUpdateWithoutCreatedDispenserInput>
+}
+
+export type UserUpdateOneWithoutUpdatedDispenserNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUpdatedDispenserInput, Prisma.UserUncheckedCreateWithoutUpdatedDispenserInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUpdatedDispenserInput
+  upsert?: Prisma.UserUpsertWithoutUpdatedDispenserInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUpdatedDispenserInput, Prisma.UserUpdateWithoutUpdatedDispenserInput>, Prisma.UserUncheckedUpdateWithoutUpdatedDispenserInput>
+}
+
+export type UserCreateWithoutCreatedDispenserInput = {
+  id?: string
+  discordId: string
+  name?: string | null
+  avatar?: string | null
+  tokenCipher?: string | null
+  tokenNonce?: string | null
+  refreshExpiresAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  discordName: string
+  updatedDispenser?: Prisma.DispenserCreateNestedManyWithoutUpdatedByInput
+}
+
+export type UserUncheckedCreateWithoutCreatedDispenserInput = {
+  id?: string
+  discordId: string
+  name?: string | null
+  avatar?: string | null
+  tokenCipher?: string | null
+  tokenNonce?: string | null
+  refreshExpiresAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  discordName: string
+  updatedDispenser?: Prisma.DispenserUncheckedCreateNestedManyWithoutUpdatedByInput
+}
+
+export type UserCreateOrConnectWithoutCreatedDispenserInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreatedDispenserInput, Prisma.UserUncheckedCreateWithoutCreatedDispenserInput>
+}
+
+export type UserCreateWithoutUpdatedDispenserInput = {
+  id?: string
+  discordId: string
+  name?: string | null
+  avatar?: string | null
+  tokenCipher?: string | null
+  tokenNonce?: string | null
+  refreshExpiresAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  discordName: string
+  createdDispenser?: Prisma.DispenserCreateNestedManyWithoutCreatedByInput
+}
+
+export type UserUncheckedCreateWithoutUpdatedDispenserInput = {
+  id?: string
+  discordId: string
+  name?: string | null
+  avatar?: string | null
+  tokenCipher?: string | null
+  tokenNonce?: string | null
+  refreshExpiresAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  discordName: string
+  createdDispenser?: Prisma.DispenserUncheckedCreateNestedManyWithoutCreatedByInput
+}
+
+export type UserCreateOrConnectWithoutUpdatedDispenserInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutUpdatedDispenserInput, Prisma.UserUncheckedCreateWithoutUpdatedDispenserInput>
+}
+
+export type UserUpsertWithoutCreatedDispenserInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCreatedDispenserInput, Prisma.UserUncheckedUpdateWithoutCreatedDispenserInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCreatedDispenserInput, Prisma.UserUncheckedCreateWithoutCreatedDispenserInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCreatedDispenserInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCreatedDispenserInput, Prisma.UserUncheckedUpdateWithoutCreatedDispenserInput>
+}
+
+export type UserUpdateWithoutCreatedDispenserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  discordId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tokenCipher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tokenNonce?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refreshExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  discordName?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedDispenser?: Prisma.DispenserUpdateManyWithoutUpdatedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCreatedDispenserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  discordId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tokenCipher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tokenNonce?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refreshExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  discordName?: Prisma.StringFieldUpdateOperationsInput | string
+  updatedDispenser?: Prisma.DispenserUncheckedUpdateManyWithoutUpdatedByNestedInput
+}
+
+export type UserUpsertWithoutUpdatedDispenserInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutUpdatedDispenserInput, Prisma.UserUncheckedUpdateWithoutUpdatedDispenserInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutUpdatedDispenserInput, Prisma.UserUncheckedCreateWithoutUpdatedDispenserInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutUpdatedDispenserInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutUpdatedDispenserInput, Prisma.UserUncheckedUpdateWithoutUpdatedDispenserInput>
+}
+
+export type UserUpdateWithoutUpdatedDispenserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  discordId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tokenCipher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tokenNonce?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refreshExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  discordName?: Prisma.StringFieldUpdateOperationsInput | string
+  createdDispenser?: Prisma.DispenserUpdateManyWithoutCreatedByNestedInput
+}
+
+export type UserUncheckedUpdateWithoutUpdatedDispenserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  discordId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tokenCipher?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tokenNonce?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refreshExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  discordName?: Prisma.StringFieldUpdateOperationsInput | string
+  createdDispenser?: Prisma.DispenserUncheckedUpdateManyWithoutCreatedByNestedInput
+}
+
+
+/**
+ * Count Type UserCountOutputType
+ */
+
+export type UserCountOutputType = {
+  createdDispenser: number
+  updatedDispenser: number
+}
+
+export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  createdDispenser?: boolean | UserCountOutputTypeCountCreatedDispenserArgs
+  updatedDispenser?: boolean | UserCountOutputTypeCountUpdatedDispenserArgs
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserCountOutputType
+   */
+  select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCreatedDispenserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DispenserWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountUpdatedDispenserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DispenserWhereInput
+}
 
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   discordId?: boolean
-  discordName?: boolean
   name?: boolean
   avatar?: boolean
   tokenCipher?: boolean
@@ -444,12 +679,15 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   refreshExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  discordName?: boolean
+  createdDispenser?: boolean | Prisma.User$createdDispenserArgs<ExtArgs>
+  updatedDispenser?: boolean | Prisma.User$updatedDispenserArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   discordId?: boolean
-  discordName?: boolean
   name?: boolean
   avatar?: boolean
   tokenCipher?: boolean
@@ -457,12 +695,12 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   refreshExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  discordName?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   discordId?: boolean
-  discordName?: boolean
   name?: boolean
   avatar?: boolean
   tokenCipher?: boolean
@@ -470,12 +708,12 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   refreshExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  discordName?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
   id?: boolean
   discordId?: boolean
-  discordName?: boolean
   name?: boolean
   avatar?: boolean
   tokenCipher?: boolean
@@ -483,17 +721,27 @@ export type UserSelectScalar = {
   refreshExpiresAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  discordName?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "discordId" | "discordName" | "name" | "avatar" | "tokenCipher" | "tokenNonce" | "refreshExpiresAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "discordId" | "name" | "avatar" | "tokenCipher" | "tokenNonce" | "refreshExpiresAt" | "createdAt" | "updatedAt" | "discordName", ExtArgs["result"]["user"]>
+export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  createdDispenser?: boolean | Prisma.User$createdDispenserArgs<ExtArgs>
+  updatedDispenser?: boolean | Prisma.User$updatedDispenserArgs<ExtArgs>
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
-  objects: {}
+  objects: {
+    createdDispenser: Prisma.$DispenserPayload<ExtArgs>[]
+    updatedDispenser: Prisma.$DispenserPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     discordId: string
-    discordName: string
     name: string | null
     avatar: string | null
     tokenCipher: string | null
@@ -501,6 +749,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     refreshExpiresAt: Date | null
     createdAt: Date
     updatedAt: Date
+    discordName: string
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -895,6 +1144,8 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  createdDispenser<T extends Prisma.User$createdDispenserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdDispenserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DispenserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  updatedDispenser<T extends Prisma.User$updatedDispenserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$updatedDispenserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DispenserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -926,7 +1177,6 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
   readonly discordId: Prisma.FieldRef<"User", 'String'>
-  readonly discordName: Prisma.FieldRef<"User", 'String'>
   readonly name: Prisma.FieldRef<"User", 'String'>
   readonly avatar: Prisma.FieldRef<"User", 'String'>
   readonly tokenCipher: Prisma.FieldRef<"User", 'String'>
@@ -934,6 +1184,7 @@ export interface UserFieldRefs {
   readonly refreshExpiresAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly discordName: Prisma.FieldRef<"User", 'String'>
 }
     
 
@@ -950,6 +1201,10 @@ export type UserFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which User to fetch.
    */
@@ -969,6 +1224,10 @@ export type UserFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput
@@ -986,6 +1245,10 @@ export type UserFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * Filter, which User to fetch.
    */
@@ -1035,6 +1298,10 @@ export type UserFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which User to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -1083,6 +1350,10 @@ export type UserFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter, which Users to fetch.
    */
   where?: Prisma.UserWhereInput
@@ -1125,6 +1396,10 @@ export type UserCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to create a User.
    */
@@ -1173,6 +1448,10 @@ export type UserUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
   /**
    * The data needed to update a User.
    */
@@ -1240,6 +1519,10 @@ export type UserUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * The filter to search for the User to update in case it exists.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1266,6 +1549,10 @@ export type UserDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  /**
    * Filter which User to delete.
    */
   where: Prisma.UserWhereUniqueInput
@@ -1286,6 +1573,54 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.createdDispenser
+ */
+export type User$createdDispenserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Dispenser
+   */
+  select?: Prisma.DispenserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Dispenser
+   */
+  omit?: Prisma.DispenserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DispenserInclude<ExtArgs> | null
+  where?: Prisma.DispenserWhereInput
+  orderBy?: Prisma.DispenserOrderByWithRelationInput | Prisma.DispenserOrderByWithRelationInput[]
+  cursor?: Prisma.DispenserWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DispenserScalarFieldEnum | Prisma.DispenserScalarFieldEnum[]
+}
+
+/**
+ * User.updatedDispenser
+ */
+export type User$updatedDispenserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Dispenser
+   */
+  select?: Prisma.DispenserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Dispenser
+   */
+  omit?: Prisma.DispenserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DispenserInclude<ExtArgs> | null
+  where?: Prisma.DispenserWhereInput
+  orderBy?: Prisma.DispenserOrderByWithRelationInput | Prisma.DispenserOrderByWithRelationInput[]
+  cursor?: Prisma.DispenserWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DispenserScalarFieldEnum | Prisma.DispenserScalarFieldEnum[]
+}
+
+/**
  * User without action
  */
 export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1297,4 +1632,8 @@ export type UserDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
 }

@@ -51,7 +51,9 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User'
+  User: 'User',
+  Dispenser: 'Dispenser',
+  Client: 'Client'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -73,17 +75,49 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const UserScalarFieldEnum = {
   id: 'id',
   discordId: 'discordId',
-  discordName: 'discordName',
   name: 'name',
   avatar: 'avatar',
   tokenCipher: 'tokenCipher',
   tokenNonce: 'tokenNonce',
   refreshExpiresAt: 'refreshExpiresAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  discordName: 'discordName'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const DispenserScalarFieldEnum = {
+  id: 'id',
+  ownerId: 'ownerId',
+  location: 'location',
+  sharePercentage: 'sharePercentage',
+  collectedAmount: 'collectedAmount',
+  lastPeriondCollectedAmount: 'lastPeriondCollectedAmount',
+  totalMoneyGenerated: 'totalMoneyGenerated',
+  periodStart: 'periodStart',
+  periodEnd: 'periodEnd',
+  createdById: 'createdById',
+  createdAt: 'createdAt',
+  updatedById: 'updatedById',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DispenserScalarFieldEnum = (typeof DispenserScalarFieldEnum)[keyof typeof DispenserScalarFieldEnum]
+
+
+export const ClientScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  phoneNumber: 'phoneNumber',
+  createdBy: 'createdBy',
+  createdAt: 'createdAt',
+  updatedBy: 'updatedBy',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
 
 
 export const SortOrder = {
