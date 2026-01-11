@@ -687,6 +687,7 @@ export const DispenserScalarFieldEnum = {
   id: 'id',
   ownerId: 'ownerId',
   location: 'location',
+  locationImgUrl: 'locationImgUrl',
   sharePercentage: 'sharePercentage',
   collectedAmount: 'collectedAmount',
   lastPeriondCollectedAmount: 'lastPeriondCollectedAmount',

@@ -44,6 +44,7 @@ export type DispenserMinAggregateOutputType = {
   id: string | null
   ownerId: string | null
   location: string | null
+  locationImgUrl: string | null
   sharePercentage: runtime.Decimal | null
   collectedAmount: number | null
   lastPeriondCollectedAmount: number | null
@@ -60,6 +61,7 @@ export type DispenserMaxAggregateOutputType = {
   id: string | null
   ownerId: string | null
   location: string | null
+  locationImgUrl: string | null
   sharePercentage: runtime.Decimal | null
   collectedAmount: number | null
   lastPeriondCollectedAmount: number | null
@@ -76,6 +78,7 @@ export type DispenserCountAggregateOutputType = {
   id: number
   ownerId: number
   location: number
+  locationImgUrl: number
   sharePercentage: number
   collectedAmount: number
   lastPeriondCollectedAmount: number
@@ -108,6 +111,7 @@ export type DispenserMinAggregateInputType = {
   id?: true
   ownerId?: true
   location?: true
+  locationImgUrl?: true
   sharePercentage?: true
   collectedAmount?: true
   lastPeriondCollectedAmount?: true
@@ -124,6 +128,7 @@ export type DispenserMaxAggregateInputType = {
   id?: true
   ownerId?: true
   location?: true
+  locationImgUrl?: true
   sharePercentage?: true
   collectedAmount?: true
   lastPeriondCollectedAmount?: true
@@ -140,6 +145,7 @@ export type DispenserCountAggregateInputType = {
   id?: true
   ownerId?: true
   location?: true
+  locationImgUrl?: true
   sharePercentage?: true
   collectedAmount?: true
   lastPeriondCollectedAmount?: true
@@ -242,7 +248,8 @@ export type DispenserGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type DispenserGroupByOutputType = {
   id: string
   ownerId: string
-  location: string
+  location: string | null
+  locationImgUrl: string | null
   sharePercentage: runtime.Decimal
   collectedAmount: number
   lastPeriondCollectedAmount: number
@@ -281,7 +288,8 @@ export type DispenserWhereInput = {
   NOT?: Prisma.DispenserWhereInput | Prisma.DispenserWhereInput[]
   id?: Prisma.StringFilter<"Dispenser"> | string
   ownerId?: Prisma.StringFilter<"Dispenser"> | string
-  location?: Prisma.StringFilter<"Dispenser"> | string
+  location?: Prisma.StringNullableFilter<"Dispenser"> | string | null
+  locationImgUrl?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   sharePercentage?: Prisma.DecimalFilter<"Dispenser"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFilter<"Dispenser"> | number
   lastPeriondCollectedAmount?: Prisma.IntFilter<"Dispenser"> | number
@@ -300,7 +308,8 @@ export type DispenserWhereInput = {
 export type DispenserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
-  location?: Prisma.SortOrder
+  location?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationImgUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
   lastPeriondCollectedAmount?: Prisma.SortOrder
@@ -322,7 +331,8 @@ export type DispenserWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.DispenserWhereInput[]
   NOT?: Prisma.DispenserWhereInput | Prisma.DispenserWhereInput[]
   ownerId?: Prisma.StringFilter<"Dispenser"> | string
-  location?: Prisma.StringFilter<"Dispenser"> | string
+  location?: Prisma.StringNullableFilter<"Dispenser"> | string | null
+  locationImgUrl?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   sharePercentage?: Prisma.DecimalFilter<"Dispenser"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFilter<"Dispenser"> | number
   lastPeriondCollectedAmount?: Prisma.IntFilter<"Dispenser"> | number
@@ -341,7 +351,8 @@ export type DispenserWhereUniqueInput = Prisma.AtLeast<{
 export type DispenserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
-  location?: Prisma.SortOrder
+  location?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationImgUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
   lastPeriondCollectedAmount?: Prisma.SortOrder
@@ -365,7 +376,8 @@ export type DispenserScalarWhereWithAggregatesInput = {
   NOT?: Prisma.DispenserScalarWhereWithAggregatesInput | Prisma.DispenserScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Dispenser"> | string
   ownerId?: Prisma.StringWithAggregatesFilter<"Dispenser"> | string
-  location?: Prisma.StringWithAggregatesFilter<"Dispenser"> | string
+  location?: Prisma.StringNullableWithAggregatesFilter<"Dispenser"> | string | null
+  locationImgUrl?: Prisma.StringNullableWithAggregatesFilter<"Dispenser"> | string | null
   sharePercentage?: Prisma.DecimalWithAggregatesFilter<"Dispenser"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
   lastPeriondCollectedAmount?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
@@ -380,11 +392,12 @@ export type DispenserScalarWhereWithAggregatesInput = {
 
 export type DispenserCreateInput = {
   id?: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdAt?: Date | string
@@ -397,11 +410,12 @@ export type DispenserCreateInput = {
 export type DispenserUncheckedCreateInput = {
   id?: string
   ownerId: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdById: string
@@ -412,7 +426,8 @@ export type DispenserUncheckedCreateInput = {
 
 export type DispenserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -429,7 +444,8 @@ export type DispenserUpdateInput = {
 export type DispenserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -445,11 +461,12 @@ export type DispenserUncheckedUpdateInput = {
 export type DispenserCreateManyInput = {
   id?: string
   ownerId: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdById: string
@@ -460,7 +477,8 @@ export type DispenserCreateManyInput = {
 
 export type DispenserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -474,7 +492,8 @@ export type DispenserUpdateManyMutationInput = {
 export type DispenserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -501,6 +520,7 @@ export type DispenserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  locationImgUrl?: Prisma.SortOrder
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
   lastPeriondCollectedAmount?: Prisma.SortOrder
@@ -524,6 +544,7 @@ export type DispenserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  locationImgUrl?: Prisma.SortOrder
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
   lastPeriondCollectedAmount?: Prisma.SortOrder
@@ -540,6 +561,7 @@ export type DispenserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  locationImgUrl?: Prisma.SortOrder
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
   lastPeriondCollectedAmount?: Prisma.SortOrder
@@ -703,11 +725,12 @@ export type DispenserUncheckedUpdateManyWithoutOwnerNestedInput = {
 
 export type DispenserCreateWithoutCreatedByInput = {
   id?: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdAt?: Date | string
@@ -719,11 +742,12 @@ export type DispenserCreateWithoutCreatedByInput = {
 export type DispenserUncheckedCreateWithoutCreatedByInput = {
   id?: string
   ownerId: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdAt?: Date | string
@@ -743,11 +767,12 @@ export type DispenserCreateManyCreatedByInputEnvelope = {
 
 export type DispenserCreateWithoutUpdatedByInput = {
   id?: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdAt?: Date | string
@@ -759,11 +784,12 @@ export type DispenserCreateWithoutUpdatedByInput = {
 export type DispenserUncheckedCreateWithoutUpdatedByInput = {
   id?: string
   ownerId: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdById: string
@@ -803,7 +829,8 @@ export type DispenserScalarWhereInput = {
   NOT?: Prisma.DispenserScalarWhereInput | Prisma.DispenserScalarWhereInput[]
   id?: Prisma.StringFilter<"Dispenser"> | string
   ownerId?: Prisma.StringFilter<"Dispenser"> | string
-  location?: Prisma.StringFilter<"Dispenser"> | string
+  location?: Prisma.StringNullableFilter<"Dispenser"> | string | null
+  locationImgUrl?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   sharePercentage?: Prisma.DecimalFilter<"Dispenser"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFilter<"Dispenser"> | number
   lastPeriondCollectedAmount?: Prisma.IntFilter<"Dispenser"> | number
@@ -834,11 +861,12 @@ export type DispenserUpdateManyWithWhereWithoutUpdatedByInput = {
 
 export type DispenserCreateWithoutOwnerInput = {
   id?: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdAt?: Date | string
@@ -849,11 +877,12 @@ export type DispenserCreateWithoutOwnerInput = {
 
 export type DispenserUncheckedCreateWithoutOwnerInput = {
   id?: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdById: string
@@ -891,11 +920,12 @@ export type DispenserUpdateManyWithWhereWithoutOwnerInput = {
 export type DispenserCreateManyCreatedByInput = {
   id?: string
   ownerId: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdAt?: Date | string
@@ -906,11 +936,12 @@ export type DispenserCreateManyCreatedByInput = {
 export type DispenserCreateManyUpdatedByInput = {
   id?: string
   ownerId: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdById: string
@@ -920,7 +951,8 @@ export type DispenserCreateManyUpdatedByInput = {
 
 export type DispenserUpdateWithoutCreatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -936,7 +968,8 @@ export type DispenserUpdateWithoutCreatedByInput = {
 export type DispenserUncheckedUpdateWithoutCreatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -951,7 +984,8 @@ export type DispenserUncheckedUpdateWithoutCreatedByInput = {
 export type DispenserUncheckedUpdateManyWithoutCreatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -965,7 +999,8 @@ export type DispenserUncheckedUpdateManyWithoutCreatedByInput = {
 
 export type DispenserUpdateWithoutUpdatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -981,7 +1016,8 @@ export type DispenserUpdateWithoutUpdatedByInput = {
 export type DispenserUncheckedUpdateWithoutUpdatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -996,7 +1032,8 @@ export type DispenserUncheckedUpdateWithoutUpdatedByInput = {
 export type DispenserUncheckedUpdateManyWithoutUpdatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1010,11 +1047,12 @@ export type DispenserUncheckedUpdateManyWithoutUpdatedByInput = {
 
 export type DispenserCreateManyOwnerInput = {
   id?: string
-  location: string
-  sharePercentage: runtime.Decimal | runtime.DecimalJsLike | number | string
-  collectedAmount: number
-  lastPeriondCollectedAmount: number
-  totalMoneyGenerated: number
+  location?: string | null
+  locationImgUrl?: string | null
+  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  collectedAmount?: number
+  lastPeriondCollectedAmount?: number
+  totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
   createdById: string
@@ -1025,7 +1063,8 @@ export type DispenserCreateManyOwnerInput = {
 
 export type DispenserUpdateWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1040,7 +1079,8 @@ export type DispenserUpdateWithoutOwnerInput = {
 
 export type DispenserUncheckedUpdateWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1055,7 +1095,8 @@ export type DispenserUncheckedUpdateWithoutOwnerInput = {
 
 export type DispenserUncheckedUpdateManyWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  location?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1074,6 +1115,7 @@ export type DispenserSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   id?: boolean
   ownerId?: boolean
   location?: boolean
+  locationImgUrl?: boolean
   sharePercentage?: boolean
   collectedAmount?: boolean
   lastPeriondCollectedAmount?: boolean
@@ -1093,6 +1135,7 @@ export type DispenserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id?: boolean
   ownerId?: boolean
   location?: boolean
+  locationImgUrl?: boolean
   sharePercentage?: boolean
   collectedAmount?: boolean
   lastPeriondCollectedAmount?: boolean
@@ -1112,6 +1155,7 @@ export type DispenserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id?: boolean
   ownerId?: boolean
   location?: boolean
+  locationImgUrl?: boolean
   sharePercentage?: boolean
   collectedAmount?: boolean
   lastPeriondCollectedAmount?: boolean
@@ -1131,6 +1175,7 @@ export type DispenserSelectScalar = {
   id?: boolean
   ownerId?: boolean
   location?: boolean
+  locationImgUrl?: boolean
   sharePercentage?: boolean
   collectedAmount?: boolean
   lastPeriondCollectedAmount?: boolean
@@ -1143,7 +1188,7 @@ export type DispenserSelectScalar = {
   updatedAt?: boolean
 }
 
-export type DispenserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "location" | "sharePercentage" | "collectedAmount" | "lastPeriondCollectedAmount" | "totalMoneyGenerated" | "periodStart" | "periodEnd" | "createdById" | "createdAt" | "updatedById" | "updatedAt", ExtArgs["result"]["dispenser"]>
+export type DispenserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "location" | "locationImgUrl" | "sharePercentage" | "collectedAmount" | "lastPeriondCollectedAmount" | "totalMoneyGenerated" | "periodStart" | "periodEnd" | "createdById" | "createdAt" | "updatedById" | "updatedAt", ExtArgs["result"]["dispenser"]>
 export type DispenserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
   createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1170,7 +1215,8 @@ export type $DispenserPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     ownerId: string
-    location: string
+    location: string | null
+    locationImgUrl: string | null
     sharePercentage: runtime.Decimal
     collectedAmount: number
     lastPeriondCollectedAmount: number
@@ -1610,6 +1656,7 @@ export interface DispenserFieldRefs {
   readonly id: Prisma.FieldRef<"Dispenser", 'String'>
   readonly ownerId: Prisma.FieldRef<"Dispenser", 'String'>
   readonly location: Prisma.FieldRef<"Dispenser", 'String'>
+  readonly locationImgUrl: Prisma.FieldRef<"Dispenser", 'String'>
   readonly sharePercentage: Prisma.FieldRef<"Dispenser", 'Decimal'>
   readonly collectedAmount: Prisma.FieldRef<"Dispenser", 'Int'>
   readonly lastPeriondCollectedAmount: Prisma.FieldRef<"Dispenser", 'Int'>
