@@ -11,6 +11,16 @@ const dispenserBody = t.Object({
   sharedPercentage: t.Optional(t.String())
 })
 
+const updateDispenserBody = t.Object({
+  location: t.String(),
+  locationImgUrl: t.Optional(t.String()),
+  sharedPercentage: t.Optional(t.String())
+})
+
+const collectDispenserBody = t.Object({
+  collectedAmount: t.Integer()  
+})
+
 export const dispenser = new Elysia({ prefix: "/dispenser" })
   .use(
     jwt({
@@ -37,15 +47,14 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
     })
     return result
   })
-  .post("/", async ({ jwt, cookie, body }) => {
-    const token = cookie.session.value;
+  .post("/", async ({ jwt, cookie: { session }, body }) => {
+    const token = session.value;
     if(typeof token != 'string')
       return;
     const payload = await jwt.verify(token)
     if(!payload || !payload.sub)
       return;
     const userId = payload.sub
-    console.log(userId)
     if(!body.ownerId) {
       const result = await prisma.dispenser.create({
         data: {
@@ -62,6 +71,9 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
               id: userId
             }
           },
+        },
+        include: {
+          owner: true
         }
       })
       return result
@@ -79,6 +91,9 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
               id: userId
             }
           },
+        },
+        include: {
+          owner: true
         }
       })
       return result
@@ -86,9 +101,81 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
   }, {
     body: dispenserBody
   })
-  .patch("/:id", async ({ params: { id } }) => {
+  .put("/:id", async ({ jwt, cookie: { session }, params: { id }, body }) => {
+    const token = session.value;
+    if(typeof token != 'string')
+      return;
+    
+    const payload = await jwt.verify(token);
+    if(!payload)
+      return;
 
+    const userId = payload.sub;
+    const result = await prisma.dispenser.update({
+      where: {
+        id: id
+      },
+      data: {
+        location: body.location,
+        locationImgUrl: body.locationImgUrl,
+        sharePercentage: body.sharedPercentage,
+        updatedBy: {
+          connect: {
+            id: userId
+          }
+        }
+      },
+      include: {
+        owner: true
+      }
+    });
+
+    return result;
+  },{
+    body: updateDispenserBody
   })
-  .patch("/collect/:id", async ({ params: { id } }) => {
+  .put("/collect/:id", async ({ jwt, cookie: { session }, params: { id }, body }) => {
+    const token = session.value;
+    if(typeof token != 'string')
+      return;
 
+    const payload = await jwt.verify(token)
+    if(!payload)
+      return;
+
+    const userId = payload.sub;
+
+    const oldRecord = await prisma.dispenser.findFirst({
+      where: {
+        id: id
+      }
+    });
+
+    if(!oldRecord)
+      return;
+
+    const result = await prisma.dispenser.update({
+      where: {
+        id: id
+      },
+      data: {
+        updatedBy:{
+          connect: {
+            id: userId
+          }
+        },
+        collectedAmount: body.collectedAmount,
+        periodEnd: new Date(),
+        periodStart: oldRecord.periodEnd,
+        lastPeriondCollectedAmount: oldRecord.collectedAmount,
+        totalMoneyGenerated: oldRecord.totalMoneyGenerated + body.collectedAmount
+      },
+      include: {
+        owner: true
+      }
+    })
+
+    return result
+  },{
+    body: collectDispenserBody
   })

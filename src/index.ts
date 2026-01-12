@@ -4,6 +4,7 @@ import { jwt } from "@elysiajs/jwt";
 import { authDiscord } from "./auth-discrod";
 import cors from "@elysiajs/cors";
 import { dispenser } from "./dispenser";
+import { user } from "./user";
 
 const app =  new Elysia()
   .use(cors({
@@ -18,6 +19,7 @@ const app =  new Elysia()
     })
   )
   .use(authDiscord)
+  .use(user)
   .use(dispenser)
   .get("/", () => "Hello Elysia");
 
