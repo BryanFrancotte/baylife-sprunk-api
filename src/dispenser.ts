@@ -8,17 +8,17 @@ const dispenserBody = t.Object({
   ownerId: t.Optional(t.String()),
   location: t.String(),
   locationImgUrl: t.Optional(t.String()),
-  sharedPercentage: t.Optional(t.String())
+  sharedPercentage: t.Optional(t.Number())
 })
 
 const updateDispenserBody = t.Object({
   location: t.String(),
   locationImgUrl: t.Optional(t.String()),
-  sharedPercentage: t.Optional(t.String())
+  sharedPercentage: t.Optional(t.Number())
 })
 
 const collectDispenserBody = t.Object({
-  collectedAmount: t.Integer()  
+  collectedAmount: t.Number()  
 })
 
 export const dispenser = new Elysia({ prefix: "/dispenser" })
@@ -66,6 +66,7 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
             }
           },
           location: body.location,
+          sharePercentage: body.sharedPercentage,
           createdBy: {
             connect: {
               id: userId
@@ -86,6 +87,7 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
             }
           },
           location: body.location,
+          sharePercentage: body.sharedPercentage,
           createdBy: {
             connect: {
               id: userId

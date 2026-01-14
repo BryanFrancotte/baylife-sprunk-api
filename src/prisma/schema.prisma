@@ -29,7 +29,7 @@ model Dispenser {
   ownerId String @db.VarChar(255)
   location String? @db.VarChar(255)
   locationImgUrl String? @db.VarChar(255)
-  sharePercentage Decimal @default(0)
+  sharePercentage Int @default(0)
   collectedAmount Int @default(0)
   lastPeriondCollectedAmount Int @default(0)
   totalMoneyGenerated Int @default(0)

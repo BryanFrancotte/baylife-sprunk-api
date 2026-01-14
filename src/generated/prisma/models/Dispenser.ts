@@ -27,14 +27,14 @@ export type AggregateDispenser = {
 }
 
 export type DispenserAvgAggregateOutputType = {
-  sharePercentage: runtime.Decimal | null
+  sharePercentage: number | null
   collectedAmount: number | null
   lastPeriondCollectedAmount: number | null
   totalMoneyGenerated: number | null
 }
 
 export type DispenserSumAggregateOutputType = {
-  sharePercentage: runtime.Decimal | null
+  sharePercentage: number | null
   collectedAmount: number | null
   lastPeriondCollectedAmount: number | null
   totalMoneyGenerated: number | null
@@ -45,7 +45,7 @@ export type DispenserMinAggregateOutputType = {
   ownerId: string | null
   location: string | null
   locationImgUrl: string | null
-  sharePercentage: runtime.Decimal | null
+  sharePercentage: number | null
   collectedAmount: number | null
   lastPeriondCollectedAmount: number | null
   totalMoneyGenerated: number | null
@@ -62,7 +62,7 @@ export type DispenserMaxAggregateOutputType = {
   ownerId: string | null
   location: string | null
   locationImgUrl: string | null
-  sharePercentage: runtime.Decimal | null
+  sharePercentage: number | null
   collectedAmount: number | null
   lastPeriondCollectedAmount: number | null
   totalMoneyGenerated: number | null
@@ -250,7 +250,7 @@ export type DispenserGroupByOutputType = {
   ownerId: string
   location: string | null
   locationImgUrl: string | null
-  sharePercentage: runtime.Decimal
+  sharePercentage: number
   collectedAmount: number
   lastPeriondCollectedAmount: number
   totalMoneyGenerated: number
@@ -290,7 +290,7 @@ export type DispenserWhereInput = {
   ownerId?: Prisma.StringFilter<"Dispenser"> | string
   location?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   locationImgUrl?: Prisma.StringNullableFilter<"Dispenser"> | string | null
-  sharePercentage?: Prisma.DecimalFilter<"Dispenser"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFilter<"Dispenser"> | number
   collectedAmount?: Prisma.IntFilter<"Dispenser"> | number
   lastPeriondCollectedAmount?: Prisma.IntFilter<"Dispenser"> | number
   totalMoneyGenerated?: Prisma.IntFilter<"Dispenser"> | number
@@ -333,7 +333,7 @@ export type DispenserWhereUniqueInput = Prisma.AtLeast<{
   ownerId?: Prisma.StringFilter<"Dispenser"> | string
   location?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   locationImgUrl?: Prisma.StringNullableFilter<"Dispenser"> | string | null
-  sharePercentage?: Prisma.DecimalFilter<"Dispenser"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFilter<"Dispenser"> | number
   collectedAmount?: Prisma.IntFilter<"Dispenser"> | number
   lastPeriondCollectedAmount?: Prisma.IntFilter<"Dispenser"> | number
   totalMoneyGenerated?: Prisma.IntFilter<"Dispenser"> | number
@@ -378,7 +378,7 @@ export type DispenserScalarWhereWithAggregatesInput = {
   ownerId?: Prisma.StringWithAggregatesFilter<"Dispenser"> | string
   location?: Prisma.StringNullableWithAggregatesFilter<"Dispenser"> | string | null
   locationImgUrl?: Prisma.StringNullableWithAggregatesFilter<"Dispenser"> | string | null
-  sharePercentage?: Prisma.DecimalWithAggregatesFilter<"Dispenser"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
   collectedAmount?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
   lastPeriondCollectedAmount?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
   totalMoneyGenerated?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
@@ -394,7 +394,7 @@ export type DispenserCreateInput = {
   id?: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -412,7 +412,7 @@ export type DispenserUncheckedCreateInput = {
   ownerId: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -428,7 +428,7 @@ export type DispenserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -446,7 +446,7 @@ export type DispenserUncheckedUpdateInput = {
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -463,7 +463,7 @@ export type DispenserCreateManyInput = {
   ownerId: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -479,7 +479,7 @@ export type DispenserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -494,7 +494,7 @@ export type DispenserUncheckedUpdateManyInput = {
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -665,14 +665,6 @@ export type DispenserUncheckedUpdateManyWithoutUpdatedByNestedInput = {
   deleteMany?: Prisma.DispenserScalarWhereInput | Prisma.DispenserScalarWhereInput[]
 }
 
-export type DecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
-}
-
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
@@ -727,7 +719,7 @@ export type DispenserCreateWithoutCreatedByInput = {
   id?: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -744,7 +736,7 @@ export type DispenserUncheckedCreateWithoutCreatedByInput = {
   ownerId: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -769,7 +761,7 @@ export type DispenserCreateWithoutUpdatedByInput = {
   id?: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -786,7 +778,7 @@ export type DispenserUncheckedCreateWithoutUpdatedByInput = {
   ownerId: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -831,7 +823,7 @@ export type DispenserScalarWhereInput = {
   ownerId?: Prisma.StringFilter<"Dispenser"> | string
   location?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   locationImgUrl?: Prisma.StringNullableFilter<"Dispenser"> | string | null
-  sharePercentage?: Prisma.DecimalFilter<"Dispenser"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFilter<"Dispenser"> | number
   collectedAmount?: Prisma.IntFilter<"Dispenser"> | number
   lastPeriondCollectedAmount?: Prisma.IntFilter<"Dispenser"> | number
   totalMoneyGenerated?: Prisma.IntFilter<"Dispenser"> | number
@@ -863,7 +855,7 @@ export type DispenserCreateWithoutOwnerInput = {
   id?: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -879,7 +871,7 @@ export type DispenserUncheckedCreateWithoutOwnerInput = {
   id?: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -922,7 +914,7 @@ export type DispenserCreateManyCreatedByInput = {
   ownerId: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -938,7 +930,7 @@ export type DispenserCreateManyUpdatedByInput = {
   ownerId: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -953,7 +945,7 @@ export type DispenserUpdateWithoutCreatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -970,7 +962,7 @@ export type DispenserUncheckedUpdateWithoutCreatedByInput = {
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -986,7 +978,7 @@ export type DispenserUncheckedUpdateManyWithoutCreatedByInput = {
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1001,7 +993,7 @@ export type DispenserUpdateWithoutUpdatedByInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1018,7 +1010,7 @@ export type DispenserUncheckedUpdateWithoutUpdatedByInput = {
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1034,7 +1026,7 @@ export type DispenserUncheckedUpdateManyWithoutUpdatedByInput = {
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1049,7 +1041,7 @@ export type DispenserCreateManyOwnerInput = {
   id?: string
   location?: string | null
   locationImgUrl?: string | null
-  sharePercentage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: number
   collectedAmount?: number
   lastPeriondCollectedAmount?: number
   totalMoneyGenerated?: number
@@ -1065,7 +1057,7 @@ export type DispenserUpdateWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1081,7 +1073,7 @@ export type DispenserUncheckedUpdateWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1097,7 +1089,7 @@ export type DispenserUncheckedUpdateManyWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  sharePercentage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1217,7 +1209,7 @@ export type $DispenserPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     ownerId: string
     location: string | null
     locationImgUrl: string | null
-    sharePercentage: runtime.Decimal
+    sharePercentage: number
     collectedAmount: number
     lastPeriondCollectedAmount: number
     totalMoneyGenerated: number
@@ -1657,7 +1649,7 @@ export interface DispenserFieldRefs {
   readonly ownerId: Prisma.FieldRef<"Dispenser", 'String'>
   readonly location: Prisma.FieldRef<"Dispenser", 'String'>
   readonly locationImgUrl: Prisma.FieldRef<"Dispenser", 'String'>
-  readonly sharePercentage: Prisma.FieldRef<"Dispenser", 'Decimal'>
+  readonly sharePercentage: Prisma.FieldRef<"Dispenser", 'Int'>
   readonly collectedAmount: Prisma.FieldRef<"Dispenser", 'Int'>
   readonly lastPeriondCollectedAmount: Prisma.FieldRef<"Dispenser", 'Int'>
   readonly totalMoneyGenerated: Prisma.FieldRef<"Dispenser", 'Int'>
