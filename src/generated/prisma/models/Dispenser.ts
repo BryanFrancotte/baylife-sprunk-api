@@ -51,6 +51,7 @@ export type DispenserMinAggregateOutputType = {
   totalMoneyGenerated: number | null
   periodStart: Date | null
   periodEnd: Date | null
+  comments: string | null
   createdById: string | null
   createdAt: Date | null
   updatedById: string | null
@@ -68,6 +69,7 @@ export type DispenserMaxAggregateOutputType = {
   totalMoneyGenerated: number | null
   periodStart: Date | null
   periodEnd: Date | null
+  comments: string | null
   createdById: string | null
   createdAt: Date | null
   updatedById: string | null
@@ -85,6 +87,7 @@ export type DispenserCountAggregateOutputType = {
   totalMoneyGenerated: number
   periodStart: number
   periodEnd: number
+  comments: number
   createdById: number
   createdAt: number
   updatedById: number
@@ -118,6 +121,7 @@ export type DispenserMinAggregateInputType = {
   totalMoneyGenerated?: true
   periodStart?: true
   periodEnd?: true
+  comments?: true
   createdById?: true
   createdAt?: true
   updatedById?: true
@@ -135,6 +139,7 @@ export type DispenserMaxAggregateInputType = {
   totalMoneyGenerated?: true
   periodStart?: true
   periodEnd?: true
+  comments?: true
   createdById?: true
   createdAt?: true
   updatedById?: true
@@ -152,6 +157,7 @@ export type DispenserCountAggregateInputType = {
   totalMoneyGenerated?: true
   periodStart?: true
   periodEnd?: true
+  comments?: true
   createdById?: true
   createdAt?: true
   updatedById?: true
@@ -256,6 +262,7 @@ export type DispenserGroupByOutputType = {
   totalMoneyGenerated: number
   periodStart: Date | null
   periodEnd: Date | null
+  comments: string | null
   createdById: string
   createdAt: Date
   updatedById: string | null
@@ -296,6 +303,7 @@ export type DispenserWhereInput = {
   totalMoneyGenerated?: Prisma.IntFilter<"Dispenser"> | number
   periodStart?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
   periodEnd?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
+  comments?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   createdById?: Prisma.StringFilter<"Dispenser"> | string
   createdAt?: Prisma.DateTimeFilter<"Dispenser"> | Date | string
   updatedById?: Prisma.StringNullableFilter<"Dispenser"> | string | null
@@ -316,6 +324,7 @@ export type DispenserOrderByWithRelationInput = {
   totalMoneyGenerated?: Prisma.SortOrder
   periodStart?: Prisma.SortOrderInput | Prisma.SortOrder
   periodEnd?: Prisma.SortOrderInput | Prisma.SortOrder
+  comments?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedById?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -339,6 +348,7 @@ export type DispenserWhereUniqueInput = Prisma.AtLeast<{
   totalMoneyGenerated?: Prisma.IntFilter<"Dispenser"> | number
   periodStart?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
   periodEnd?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
+  comments?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   createdById?: Prisma.StringFilter<"Dispenser"> | string
   createdAt?: Prisma.DateTimeFilter<"Dispenser"> | Date | string
   updatedById?: Prisma.StringNullableFilter<"Dispenser"> | string | null
@@ -359,6 +369,7 @@ export type DispenserOrderByWithAggregationInput = {
   totalMoneyGenerated?: Prisma.SortOrder
   periodStart?: Prisma.SortOrderInput | Prisma.SortOrder
   periodEnd?: Prisma.SortOrderInput | Prisma.SortOrder
+  comments?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedById?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -384,6 +395,7 @@ export type DispenserScalarWhereWithAggregatesInput = {
   totalMoneyGenerated?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
   periodStart?: Prisma.DateTimeNullableWithAggregatesFilter<"Dispenser"> | Date | string | null
   periodEnd?: Prisma.DateTimeNullableWithAggregatesFilter<"Dispenser"> | Date | string | null
+  comments?: Prisma.StringNullableWithAggregatesFilter<"Dispenser"> | string | null
   createdById?: Prisma.StringWithAggregatesFilter<"Dispenser"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Dispenser"> | Date | string
   updatedById?: Prisma.StringNullableWithAggregatesFilter<"Dispenser"> | string | null
@@ -400,6 +412,7 @@ export type DispenserCreateInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   owner: Prisma.ClientCreateNestedOneWithoutDispensersInput
@@ -418,6 +431,7 @@ export type DispenserUncheckedCreateInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdById: string
   createdAt?: Date | string
   updatedById?: string | null
@@ -434,6 +448,7 @@ export type DispenserUpdateInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   owner?: Prisma.ClientUpdateOneRequiredWithoutDispensersNestedInput
@@ -452,6 +467,7 @@ export type DispenserUncheckedUpdateInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -469,6 +485,7 @@ export type DispenserCreateManyInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdById: string
   createdAt?: Date | string
   updatedById?: string | null
@@ -485,6 +502,7 @@ export type DispenserUpdateManyMutationInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -500,6 +518,7 @@ export type DispenserUncheckedUpdateManyInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -527,6 +546,7 @@ export type DispenserCountOrderByAggregateInput = {
   totalMoneyGenerated?: Prisma.SortOrder
   periodStart?: Prisma.SortOrder
   periodEnd?: Prisma.SortOrder
+  comments?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedById?: Prisma.SortOrder
@@ -551,6 +571,7 @@ export type DispenserMaxOrderByAggregateInput = {
   totalMoneyGenerated?: Prisma.SortOrder
   periodStart?: Prisma.SortOrder
   periodEnd?: Prisma.SortOrder
+  comments?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedById?: Prisma.SortOrder
@@ -568,6 +589,7 @@ export type DispenserMinOrderByAggregateInput = {
   totalMoneyGenerated?: Prisma.SortOrder
   periodStart?: Prisma.SortOrder
   periodEnd?: Prisma.SortOrder
+  comments?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedById?: Prisma.SortOrder
@@ -725,6 +747,7 @@ export type DispenserCreateWithoutCreatedByInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   owner: Prisma.ClientCreateNestedOneWithoutDispensersInput
@@ -742,6 +765,7 @@ export type DispenserUncheckedCreateWithoutCreatedByInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdAt?: Date | string
   updatedById?: string | null
   updatedAt?: Date | string
@@ -767,6 +791,7 @@ export type DispenserCreateWithoutUpdatedByInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   owner: Prisma.ClientCreateNestedOneWithoutDispensersInput
@@ -784,6 +809,7 @@ export type DispenserUncheckedCreateWithoutUpdatedByInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -829,6 +855,7 @@ export type DispenserScalarWhereInput = {
   totalMoneyGenerated?: Prisma.IntFilter<"Dispenser"> | number
   periodStart?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
   periodEnd?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
+  comments?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   createdById?: Prisma.StringFilter<"Dispenser"> | string
   createdAt?: Prisma.DateTimeFilter<"Dispenser"> | Date | string
   updatedById?: Prisma.StringNullableFilter<"Dispenser"> | string | null
@@ -861,6 +888,7 @@ export type DispenserCreateWithoutOwnerInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy: Prisma.UserCreateNestedOneWithoutCreatedDispenserInput
@@ -877,6 +905,7 @@ export type DispenserUncheckedCreateWithoutOwnerInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdById: string
   createdAt?: Date | string
   updatedById?: string | null
@@ -920,6 +949,7 @@ export type DispenserCreateManyCreatedByInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdAt?: Date | string
   updatedById?: string | null
   updatedAt?: Date | string
@@ -936,6 +966,7 @@ export type DispenserCreateManyUpdatedByInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -951,6 +982,7 @@ export type DispenserUpdateWithoutCreatedByInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   owner?: Prisma.ClientUpdateOneRequiredWithoutDispensersNestedInput
@@ -968,6 +1000,7 @@ export type DispenserUncheckedUpdateWithoutCreatedByInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -984,6 +1017,7 @@ export type DispenserUncheckedUpdateManyWithoutCreatedByInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -999,6 +1033,7 @@ export type DispenserUpdateWithoutUpdatedByInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   owner?: Prisma.ClientUpdateOneRequiredWithoutDispensersNestedInput
@@ -1016,6 +1051,7 @@ export type DispenserUncheckedUpdateWithoutUpdatedByInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1032,6 +1068,7 @@ export type DispenserUncheckedUpdateManyWithoutUpdatedByInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1047,6 +1084,7 @@ export type DispenserCreateManyOwnerInput = {
   totalMoneyGenerated?: number
   periodStart?: Date | string | null
   periodEnd?: Date | string | null
+  comments?: string | null
   createdById: string
   createdAt?: Date | string
   updatedById?: string | null
@@ -1063,6 +1101,7 @@ export type DispenserUpdateWithoutOwnerInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.UserUpdateOneRequiredWithoutCreatedDispenserNestedInput
@@ -1079,6 +1118,7 @@ export type DispenserUncheckedUpdateWithoutOwnerInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1095,6 +1135,7 @@ export type DispenserUncheckedUpdateManyWithoutOwnerInput = {
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
   periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1114,6 +1155,7 @@ export type DispenserSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   totalMoneyGenerated?: boolean
   periodStart?: boolean
   periodEnd?: boolean
+  comments?: boolean
   createdById?: boolean
   createdAt?: boolean
   updatedById?: boolean
@@ -1134,6 +1176,7 @@ export type DispenserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   totalMoneyGenerated?: boolean
   periodStart?: boolean
   periodEnd?: boolean
+  comments?: boolean
   createdById?: boolean
   createdAt?: boolean
   updatedById?: boolean
@@ -1154,6 +1197,7 @@ export type DispenserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   totalMoneyGenerated?: boolean
   periodStart?: boolean
   periodEnd?: boolean
+  comments?: boolean
   createdById?: boolean
   createdAt?: boolean
   updatedById?: boolean
@@ -1174,13 +1218,14 @@ export type DispenserSelectScalar = {
   totalMoneyGenerated?: boolean
   periodStart?: boolean
   periodEnd?: boolean
+  comments?: boolean
   createdById?: boolean
   createdAt?: boolean
   updatedById?: boolean
   updatedAt?: boolean
 }
 
-export type DispenserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "location" | "locationImgUrl" | "sharePercentage" | "collectedAmount" | "lastPeriondCollectedAmount" | "totalMoneyGenerated" | "periodStart" | "periodEnd" | "createdById" | "createdAt" | "updatedById" | "updatedAt", ExtArgs["result"]["dispenser"]>
+export type DispenserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "location" | "locationImgUrl" | "sharePercentage" | "collectedAmount" | "lastPeriondCollectedAmount" | "totalMoneyGenerated" | "periodStart" | "periodEnd" | "comments" | "createdById" | "createdAt" | "updatedById" | "updatedAt", ExtArgs["result"]["dispenser"]>
 export type DispenserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
   createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1215,6 +1260,7 @@ export type $DispenserPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     totalMoneyGenerated: number
     periodStart: Date | null
     periodEnd: Date | null
+    comments: string | null
     createdById: string
     createdAt: Date
     updatedById: string | null
@@ -1655,6 +1701,7 @@ export interface DispenserFieldRefs {
   readonly totalMoneyGenerated: Prisma.FieldRef<"Dispenser", 'Int'>
   readonly periodStart: Prisma.FieldRef<"Dispenser", 'DateTime'>
   readonly periodEnd: Prisma.FieldRef<"Dispenser", 'DateTime'>
+  readonly comments: Prisma.FieldRef<"Dispenser", 'String'>
   readonly createdById: Prisma.FieldRef<"Dispenser", 'String'>
   readonly createdAt: Prisma.FieldRef<"Dispenser", 'DateTime'>
   readonly updatedById: Prisma.FieldRef<"Dispenser", 'String'>

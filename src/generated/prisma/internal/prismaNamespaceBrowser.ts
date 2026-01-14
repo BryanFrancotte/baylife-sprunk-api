@@ -99,6 +99,7 @@ export const DispenserScalarFieldEnum = {
   totalMoneyGenerated: 'totalMoneyGenerated',
   periodStart: 'periodStart',
   periodEnd: 'periodEnd',
+  comments: 'comments',
   createdById: 'createdById',
   createdAt: 'createdAt',
   updatedById: 'updatedById',

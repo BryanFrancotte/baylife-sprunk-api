@@ -35,6 +35,7 @@ model Dispenser {
   totalMoneyGenerated Int @default(0)
   periodStart DateTime?
   periodEnd DateTime?
+  comments String? @db.VarChar(255)
   createdById String @db.VarChar(255)
   createdAt DateTime @default(now())
   updatedById String? @db.VarChar(255)
