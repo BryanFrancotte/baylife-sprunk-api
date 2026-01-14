@@ -8,14 +8,14 @@ const dispenserBody = t.Object({
   ownerId: t.Optional(t.String()),
   location: t.String(),
   locationImgUrl: t.Optional(t.String()),
-  sharedPercentage: t.Optional(t.Number()),
+  sharePercentage: t.Optional(t.Number()),
   comment: t.Optional(t.String())
 })
 
 const updateDispenserBody = t.Object({
   location: t.String(),
   locationImgUrl: t.Optional(t.String()),
-  sharedPercentage: t.Optional(t.Number()),
+  sharePercentage: t.Optional(t.Number()),
   comment: t.Optional(t.String())
 })
 
@@ -56,6 +56,7 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
     const payload = await jwt.verify(token)
     if(!payload || !payload.sub)
       return;
+    console.log("test percentage: " + body.sharePercentage)
     const userId = payload.sub
     if(!body.ownerId) {
       const result = await prisma.dispenser.create({
@@ -68,7 +69,7 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
             }
           },
           location: body.location,
-          sharePercentage: body.sharedPercentage,
+          sharePercentage: body.sharePercentage,
           comments: body.comment,
           createdBy: {
             connect: {
@@ -90,7 +91,7 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
             }
           },
           location: body.location,
-          sharePercentage: body.sharedPercentage,
+          sharePercentage: body.sharePercentage,
           comments: body.comment,
           createdBy: {
             connect: {
@@ -124,7 +125,7 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
       data: {
         location: body.location,
         locationImgUrl: body.locationImgUrl,
-        sharePercentage: body.sharedPercentage,
+        sharePercentage: body.sharePercentage,
         comments: body.comment,
         updatedBy: {
           connect: {
