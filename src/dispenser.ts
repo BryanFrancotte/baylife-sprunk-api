@@ -1,6 +1,7 @@
 import Elysia, { t } from "elysia";
 import prisma from "./prisma";
 import jwt from "@elysiajs/jwt";
+import { client } from "./client";
 
 const dispenserBody = t.Object({
   ownerName: t.Optional(t.String()),
@@ -23,6 +24,11 @@ const collectDispenserBody = t.Object({
   collectedAmount: t.Number()  
 })
 
+const updateOwnerBody = t.Object({
+  name: t.String(),
+  phoneNumber: t.String()
+})
+
 export const dispenser = new Elysia({ prefix: "/dispenser" })
   .use(
     jwt({
@@ -31,12 +37,23 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
     })
   )
   .get("/", async () => {
-    const response = await prisma.dispenser.findMany({
+    const result = await prisma.dispenser.findMany({
       include: {
         owner: true
+      },
+      orderBy: {
+        createdAt: "asc"
       }
     })
-    return response
+    return result
+  })
+  .get("/owners/", async () => {
+    const result = await prisma.client.findMany({
+      orderBy: {
+        createdAt: "asc"
+      }
+    });
+    return result;
   })
   .get("/phone/:phoneNumber", async ({ params: {phoneNumber} }) => {
     const result = await prisma.client.findFirst({
@@ -45,6 +62,9 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
       },
       include: {
         dispensers: true
+      },
+      orderBy: {
+        createdAt: "asc"
       }
     })
     return result
@@ -108,7 +128,7 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
   }, {
     body: dispenserBody
   })
-  .put("/:id", async ({ jwt, cookie: { session }, params: { id }, body }) => {
+  .patch("/:id", async ({ jwt, cookie: { session }, params: { id }, body }) => {
     const token = session.value;
     if(typeof token != 'string')
       return;
@@ -142,7 +162,7 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
   },{
     body: updateDispenserBody
   })
-  .put("/collect/:id", async ({ jwt, cookie: { session }, params: { id }, body }) => {
+  .patch("/collect/:id", async ({ jwt, cookie: { session }, params: { id }, body }) => {
     const token = session.value;
     if(typeof token != 'string')
       return;
@@ -186,4 +206,28 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
     return result
   },{
     body: collectDispenserBody
+  })
+  .patch("/owner/:id", async ({jwt, cookie: {session}, params: {id}, body}) => {
+    const token = session.value;
+    if (typeof token != "string") return;
+
+    const payload = await jwt.verify(token);
+    if (!payload) return;
+
+    const userId = payload.sub
+
+    const result = await prisma.client.update({
+      where: {
+        id: id
+      },
+      data: {
+        updatedBy: userId,
+        name: body.name,
+        phoneNumber: body.phoneNumber 
+      }
+    })
+
+    return result;
+  }, {
+    body: updateOwnerBody
   })
