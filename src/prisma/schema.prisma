@@ -31,10 +31,8 @@ model Dispenser {
   locationImgUrl String? @db.VarChar(255)
   sharePercentage Int @default(0)
   collectedAmount Int @default(0)
-  lastPeriondCollectedAmount Int @default(0)
+  CollectedAmountToPayment Int @default(0)
   totalMoneyGenerated Int @default(0)
-  periodStart DateTime?
-  periodEnd DateTime?
   comments String? @db.VarChar(255)
   createdById String @db.VarChar(255)
   createdAt DateTime @default(now())

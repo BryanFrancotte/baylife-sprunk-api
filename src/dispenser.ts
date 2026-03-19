@@ -193,9 +193,7 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
           }
         },
         collectedAmount: body.collectedAmount,
-        periodEnd: new Date(),
-        periodStart: oldRecord.periodEnd,
-        lastPeriondCollectedAmount: oldRecord.collectedAmount,
+        CollectedAmountToPayment: oldRecord.CollectedAmountToPayment + body.collectedAmount,
         totalMoneyGenerated: oldRecord.totalMoneyGenerated + body.collectedAmount
       },
       include: {
@@ -230,4 +228,26 @@ export const dispenser = new Elysia({ prefix: "/dispenser" })
     return result;
   }, {
     body: updateOwnerBody
+  })
+  .get("/owner/:id/payment", async ({jwt, cookie: {session}, params: {id}}) => {
+    const token = session.value;
+    if(typeof token != "string") return;
+
+    const payload = await jwt.verify(token);
+    if(!payload) return;
+
+    const userId = payload.sub;
+
+    const result = await prisma.dispenser.updateMany({
+      where: {
+        ownerId :id
+      },
+      data: {
+        updatedById: userId,
+        CollectedAmountToPayment: 0,
+        collectedAmount: 0
+      }
+    })
+
+    return result;
   })

@@ -29,14 +29,14 @@ export type AggregateDispenser = {
 export type DispenserAvgAggregateOutputType = {
   sharePercentage: number | null
   collectedAmount: number | null
-  lastPeriondCollectedAmount: number | null
+  CollectedAmountToPayment: number | null
   totalMoneyGenerated: number | null
 }
 
 export type DispenserSumAggregateOutputType = {
   sharePercentage: number | null
   collectedAmount: number | null
-  lastPeriondCollectedAmount: number | null
+  CollectedAmountToPayment: number | null
   totalMoneyGenerated: number | null
 }
 
@@ -47,10 +47,8 @@ export type DispenserMinAggregateOutputType = {
   locationImgUrl: string | null
   sharePercentage: number | null
   collectedAmount: number | null
-  lastPeriondCollectedAmount: number | null
+  CollectedAmountToPayment: number | null
   totalMoneyGenerated: number | null
-  periodStart: Date | null
-  periodEnd: Date | null
   comments: string | null
   createdById: string | null
   createdAt: Date | null
@@ -65,10 +63,8 @@ export type DispenserMaxAggregateOutputType = {
   locationImgUrl: string | null
   sharePercentage: number | null
   collectedAmount: number | null
-  lastPeriondCollectedAmount: number | null
+  CollectedAmountToPayment: number | null
   totalMoneyGenerated: number | null
-  periodStart: Date | null
-  periodEnd: Date | null
   comments: string | null
   createdById: string | null
   createdAt: Date | null
@@ -83,10 +79,8 @@ export type DispenserCountAggregateOutputType = {
   locationImgUrl: number
   sharePercentage: number
   collectedAmount: number
-  lastPeriondCollectedAmount: number
+  CollectedAmountToPayment: number
   totalMoneyGenerated: number
-  periodStart: number
-  periodEnd: number
   comments: number
   createdById: number
   createdAt: number
@@ -99,14 +93,14 @@ export type DispenserCountAggregateOutputType = {
 export type DispenserAvgAggregateInputType = {
   sharePercentage?: true
   collectedAmount?: true
-  lastPeriondCollectedAmount?: true
+  CollectedAmountToPayment?: true
   totalMoneyGenerated?: true
 }
 
 export type DispenserSumAggregateInputType = {
   sharePercentage?: true
   collectedAmount?: true
-  lastPeriondCollectedAmount?: true
+  CollectedAmountToPayment?: true
   totalMoneyGenerated?: true
 }
 
@@ -117,10 +111,8 @@ export type DispenserMinAggregateInputType = {
   locationImgUrl?: true
   sharePercentage?: true
   collectedAmount?: true
-  lastPeriondCollectedAmount?: true
+  CollectedAmountToPayment?: true
   totalMoneyGenerated?: true
-  periodStart?: true
-  periodEnd?: true
   comments?: true
   createdById?: true
   createdAt?: true
@@ -135,10 +127,8 @@ export type DispenserMaxAggregateInputType = {
   locationImgUrl?: true
   sharePercentage?: true
   collectedAmount?: true
-  lastPeriondCollectedAmount?: true
+  CollectedAmountToPayment?: true
   totalMoneyGenerated?: true
-  periodStart?: true
-  periodEnd?: true
   comments?: true
   createdById?: true
   createdAt?: true
@@ -153,10 +143,8 @@ export type DispenserCountAggregateInputType = {
   locationImgUrl?: true
   sharePercentage?: true
   collectedAmount?: true
-  lastPeriondCollectedAmount?: true
+  CollectedAmountToPayment?: true
   totalMoneyGenerated?: true
-  periodStart?: true
-  periodEnd?: true
   comments?: true
   createdById?: true
   createdAt?: true
@@ -258,10 +246,8 @@ export type DispenserGroupByOutputType = {
   locationImgUrl: string | null
   sharePercentage: number
   collectedAmount: number
-  lastPeriondCollectedAmount: number
+  CollectedAmountToPayment: number
   totalMoneyGenerated: number
-  periodStart: Date | null
-  periodEnd: Date | null
   comments: string | null
   createdById: string
   createdAt: Date
@@ -299,10 +285,8 @@ export type DispenserWhereInput = {
   locationImgUrl?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   sharePercentage?: Prisma.IntFilter<"Dispenser"> | number
   collectedAmount?: Prisma.IntFilter<"Dispenser"> | number
-  lastPeriondCollectedAmount?: Prisma.IntFilter<"Dispenser"> | number
+  CollectedAmountToPayment?: Prisma.IntFilter<"Dispenser"> | number
   totalMoneyGenerated?: Prisma.IntFilter<"Dispenser"> | number
-  periodStart?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
-  periodEnd?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
   comments?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   createdById?: Prisma.StringFilter<"Dispenser"> | string
   createdAt?: Prisma.DateTimeFilter<"Dispenser"> | Date | string
@@ -320,10 +304,8 @@ export type DispenserOrderByWithRelationInput = {
   locationImgUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
-  lastPeriondCollectedAmount?: Prisma.SortOrder
+  CollectedAmountToPayment?: Prisma.SortOrder
   totalMoneyGenerated?: Prisma.SortOrder
-  periodStart?: Prisma.SortOrderInput | Prisma.SortOrder
-  periodEnd?: Prisma.SortOrderInput | Prisma.SortOrder
   comments?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -344,10 +326,8 @@ export type DispenserWhereUniqueInput = Prisma.AtLeast<{
   locationImgUrl?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   sharePercentage?: Prisma.IntFilter<"Dispenser"> | number
   collectedAmount?: Prisma.IntFilter<"Dispenser"> | number
-  lastPeriondCollectedAmount?: Prisma.IntFilter<"Dispenser"> | number
+  CollectedAmountToPayment?: Prisma.IntFilter<"Dispenser"> | number
   totalMoneyGenerated?: Prisma.IntFilter<"Dispenser"> | number
-  periodStart?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
-  periodEnd?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
   comments?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   createdById?: Prisma.StringFilter<"Dispenser"> | string
   createdAt?: Prisma.DateTimeFilter<"Dispenser"> | Date | string
@@ -365,10 +345,8 @@ export type DispenserOrderByWithAggregationInput = {
   locationImgUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
-  lastPeriondCollectedAmount?: Prisma.SortOrder
+  CollectedAmountToPayment?: Prisma.SortOrder
   totalMoneyGenerated?: Prisma.SortOrder
-  periodStart?: Prisma.SortOrderInput | Prisma.SortOrder
-  periodEnd?: Prisma.SortOrderInput | Prisma.SortOrder
   comments?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -391,10 +369,8 @@ export type DispenserScalarWhereWithAggregatesInput = {
   locationImgUrl?: Prisma.StringNullableWithAggregatesFilter<"Dispenser"> | string | null
   sharePercentage?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
   collectedAmount?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
-  lastPeriondCollectedAmount?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
+  CollectedAmountToPayment?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
   totalMoneyGenerated?: Prisma.IntWithAggregatesFilter<"Dispenser"> | number
-  periodStart?: Prisma.DateTimeNullableWithAggregatesFilter<"Dispenser"> | Date | string | null
-  periodEnd?: Prisma.DateTimeNullableWithAggregatesFilter<"Dispenser"> | Date | string | null
   comments?: Prisma.StringNullableWithAggregatesFilter<"Dispenser"> | string | null
   createdById?: Prisma.StringWithAggregatesFilter<"Dispenser"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Dispenser"> | Date | string
@@ -408,10 +384,8 @@ export type DispenserCreateInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -427,10 +401,8 @@ export type DispenserUncheckedCreateInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdById: string
   createdAt?: Date | string
@@ -444,10 +416,8 @@ export type DispenserUpdateInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -463,10 +433,8 @@ export type DispenserUncheckedUpdateInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -481,10 +449,8 @@ export type DispenserCreateManyInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdById: string
   createdAt?: Date | string
@@ -498,10 +464,8 @@ export type DispenserUpdateManyMutationInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -514,10 +478,8 @@ export type DispenserUncheckedUpdateManyInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -542,10 +504,8 @@ export type DispenserCountOrderByAggregateInput = {
   locationImgUrl?: Prisma.SortOrder
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
-  lastPeriondCollectedAmount?: Prisma.SortOrder
+  CollectedAmountToPayment?: Prisma.SortOrder
   totalMoneyGenerated?: Prisma.SortOrder
-  periodStart?: Prisma.SortOrder
-  periodEnd?: Prisma.SortOrder
   comments?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -556,7 +516,7 @@ export type DispenserCountOrderByAggregateInput = {
 export type DispenserAvgOrderByAggregateInput = {
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
-  lastPeriondCollectedAmount?: Prisma.SortOrder
+  CollectedAmountToPayment?: Prisma.SortOrder
   totalMoneyGenerated?: Prisma.SortOrder
 }
 
@@ -567,10 +527,8 @@ export type DispenserMaxOrderByAggregateInput = {
   locationImgUrl?: Prisma.SortOrder
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
-  lastPeriondCollectedAmount?: Prisma.SortOrder
+  CollectedAmountToPayment?: Prisma.SortOrder
   totalMoneyGenerated?: Prisma.SortOrder
-  periodStart?: Prisma.SortOrder
-  periodEnd?: Prisma.SortOrder
   comments?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -585,10 +543,8 @@ export type DispenserMinOrderByAggregateInput = {
   locationImgUrl?: Prisma.SortOrder
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
-  lastPeriondCollectedAmount?: Prisma.SortOrder
+  CollectedAmountToPayment?: Prisma.SortOrder
   totalMoneyGenerated?: Prisma.SortOrder
-  periodStart?: Prisma.SortOrder
-  periodEnd?: Prisma.SortOrder
   comments?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -599,7 +555,7 @@ export type DispenserMinOrderByAggregateInput = {
 export type DispenserSumOrderByAggregateInput = {
   sharePercentage?: Prisma.SortOrder
   collectedAmount?: Prisma.SortOrder
-  lastPeriondCollectedAmount?: Prisma.SortOrder
+  CollectedAmountToPayment?: Prisma.SortOrder
   totalMoneyGenerated?: Prisma.SortOrder
 }
 
@@ -743,10 +699,8 @@ export type DispenserCreateWithoutCreatedByInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -761,10 +715,8 @@ export type DispenserUncheckedCreateWithoutCreatedByInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdAt?: Date | string
   updatedById?: string | null
@@ -787,10 +739,8 @@ export type DispenserCreateWithoutUpdatedByInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -805,10 +755,8 @@ export type DispenserUncheckedCreateWithoutUpdatedByInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdById: string
   createdAt?: Date | string
@@ -851,10 +799,8 @@ export type DispenserScalarWhereInput = {
   locationImgUrl?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   sharePercentage?: Prisma.IntFilter<"Dispenser"> | number
   collectedAmount?: Prisma.IntFilter<"Dispenser"> | number
-  lastPeriondCollectedAmount?: Prisma.IntFilter<"Dispenser"> | number
+  CollectedAmountToPayment?: Prisma.IntFilter<"Dispenser"> | number
   totalMoneyGenerated?: Prisma.IntFilter<"Dispenser"> | number
-  periodStart?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
-  periodEnd?: Prisma.DateTimeNullableFilter<"Dispenser"> | Date | string | null
   comments?: Prisma.StringNullableFilter<"Dispenser"> | string | null
   createdById?: Prisma.StringFilter<"Dispenser"> | string
   createdAt?: Prisma.DateTimeFilter<"Dispenser"> | Date | string
@@ -884,10 +830,8 @@ export type DispenserCreateWithoutOwnerInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -901,10 +845,8 @@ export type DispenserUncheckedCreateWithoutOwnerInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdById: string
   createdAt?: Date | string
@@ -945,10 +887,8 @@ export type DispenserCreateManyCreatedByInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdAt?: Date | string
   updatedById?: string | null
@@ -962,10 +902,8 @@ export type DispenserCreateManyUpdatedByInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdById: string
   createdAt?: Date | string
@@ -978,10 +916,8 @@ export type DispenserUpdateWithoutCreatedByInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -996,10 +932,8 @@ export type DispenserUncheckedUpdateWithoutCreatedByInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1013,10 +947,8 @@ export type DispenserUncheckedUpdateManyWithoutCreatedByInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1029,10 +961,8 @@ export type DispenserUpdateWithoutUpdatedByInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1047,10 +977,8 @@ export type DispenserUncheckedUpdateWithoutUpdatedByInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1064,10 +992,8 @@ export type DispenserUncheckedUpdateManyWithoutUpdatedByInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1080,10 +1006,8 @@ export type DispenserCreateManyOwnerInput = {
   locationImgUrl?: string | null
   sharePercentage?: number
   collectedAmount?: number
-  lastPeriondCollectedAmount?: number
+  CollectedAmountToPayment?: number
   totalMoneyGenerated?: number
-  periodStart?: Date | string | null
-  periodEnd?: Date | string | null
   comments?: string | null
   createdById: string
   createdAt?: Date | string
@@ -1097,10 +1021,8 @@ export type DispenserUpdateWithoutOwnerInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1114,10 +1036,8 @@ export type DispenserUncheckedUpdateWithoutOwnerInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1131,10 +1051,8 @@ export type DispenserUncheckedUpdateManyWithoutOwnerInput = {
   locationImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sharePercentage?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
-  lastPeriondCollectedAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  CollectedAmountToPayment?: Prisma.IntFieldUpdateOperationsInput | number
   totalMoneyGenerated?: Prisma.IntFieldUpdateOperationsInput | number
-  periodStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  periodEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   comments?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1151,10 +1069,8 @@ export type DispenserSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   locationImgUrl?: boolean
   sharePercentage?: boolean
   collectedAmount?: boolean
-  lastPeriondCollectedAmount?: boolean
+  CollectedAmountToPayment?: boolean
   totalMoneyGenerated?: boolean
-  periodStart?: boolean
-  periodEnd?: boolean
   comments?: boolean
   createdById?: boolean
   createdAt?: boolean
@@ -1172,10 +1088,8 @@ export type DispenserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   locationImgUrl?: boolean
   sharePercentage?: boolean
   collectedAmount?: boolean
-  lastPeriondCollectedAmount?: boolean
+  CollectedAmountToPayment?: boolean
   totalMoneyGenerated?: boolean
-  periodStart?: boolean
-  periodEnd?: boolean
   comments?: boolean
   createdById?: boolean
   createdAt?: boolean
@@ -1193,10 +1107,8 @@ export type DispenserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   locationImgUrl?: boolean
   sharePercentage?: boolean
   collectedAmount?: boolean
-  lastPeriondCollectedAmount?: boolean
+  CollectedAmountToPayment?: boolean
   totalMoneyGenerated?: boolean
-  periodStart?: boolean
-  periodEnd?: boolean
   comments?: boolean
   createdById?: boolean
   createdAt?: boolean
@@ -1214,10 +1126,8 @@ export type DispenserSelectScalar = {
   locationImgUrl?: boolean
   sharePercentage?: boolean
   collectedAmount?: boolean
-  lastPeriondCollectedAmount?: boolean
+  CollectedAmountToPayment?: boolean
   totalMoneyGenerated?: boolean
-  periodStart?: boolean
-  periodEnd?: boolean
   comments?: boolean
   createdById?: boolean
   createdAt?: boolean
@@ -1225,7 +1135,7 @@ export type DispenserSelectScalar = {
   updatedAt?: boolean
 }
 
-export type DispenserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "location" | "locationImgUrl" | "sharePercentage" | "collectedAmount" | "lastPeriondCollectedAmount" | "totalMoneyGenerated" | "periodStart" | "periodEnd" | "comments" | "createdById" | "createdAt" | "updatedById" | "updatedAt", ExtArgs["result"]["dispenser"]>
+export type DispenserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "location" | "locationImgUrl" | "sharePercentage" | "collectedAmount" | "CollectedAmountToPayment" | "totalMoneyGenerated" | "comments" | "createdById" | "createdAt" | "updatedById" | "updatedAt", ExtArgs["result"]["dispenser"]>
 export type DispenserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
   createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1256,10 +1166,8 @@ export type $DispenserPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     locationImgUrl: string | null
     sharePercentage: number
     collectedAmount: number
-    lastPeriondCollectedAmount: number
+    CollectedAmountToPayment: number
     totalMoneyGenerated: number
-    periodStart: Date | null
-    periodEnd: Date | null
     comments: string | null
     createdById: string
     createdAt: Date
@@ -1697,10 +1605,8 @@ export interface DispenserFieldRefs {
   readonly locationImgUrl: Prisma.FieldRef<"Dispenser", 'String'>
   readonly sharePercentage: Prisma.FieldRef<"Dispenser", 'Int'>
   readonly collectedAmount: Prisma.FieldRef<"Dispenser", 'Int'>
-  readonly lastPeriondCollectedAmount: Prisma.FieldRef<"Dispenser", 'Int'>
+  readonly CollectedAmountToPayment: Prisma.FieldRef<"Dispenser", 'Int'>
   readonly totalMoneyGenerated: Prisma.FieldRef<"Dispenser", 'Int'>
-  readonly periodStart: Prisma.FieldRef<"Dispenser", 'DateTime'>
-  readonly periodEnd: Prisma.FieldRef<"Dispenser", 'DateTime'>
   readonly comments: Prisma.FieldRef<"Dispenser", 'String'>
   readonly createdById: Prisma.FieldRef<"Dispenser", 'String'>
   readonly createdAt: Prisma.FieldRef<"Dispenser", 'DateTime'>
